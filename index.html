@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="المستشار القانوني المغربي - استشارات قانونية ذكية مدعومة بالذكاء الاصطناعي"/>
+<meta name="description" content="Haqqi — حقي | استشارات قانونية ذكية مدعومة بالذكاء الاصطناعي للمغاربة"/>
 <meta name="theme-color" content="#8B0000"/>
+<meta property="og:title" content="Haqqi — حقي"/>
+<meta property="og:description" content="حقك في يدك — استشارات قانونية ذكية بالمغرب"/>
+<meta property="og:url" content="https://haqqi.ma"/>
 <link rel="manifest" href="manifest.json"/>
-<title>⚖️ المستشار القانوني المغربي</title>
+<title>⚖️ Haqqi — حقي | استشارات قانونية بالمغرب</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
 <style>
 :root {
@@ -360,8 +363,8 @@ footer a { color:var(--gold); text-decoration:none; }
     <div class="logo">
       <span class="logo-icon">⚖️</span>
       <div class="logo-text">
-        <h1 id="site-title">المستشار القانوني المغربي</h1>
-        <p id="site-sub">مدعوم بالذكاء الاصطناعي • استشارات فورية</p>
+        <h1 id="site-title" style="font-size:22px;letter-spacing:1px"><span style="color:#C8A96E;font-size:26px;font-weight:900">Haqqi</span> <span style="color:rgba(255,255,255,0.5)">|</span> <span id="site-title-ar">حقي</span></h1>
+        <p id="site-sub">حقك في يدك • استشارات قانونية ذكية 🇲🇦</p>
       </div>
     </div>
     <div class="header-actions">
@@ -416,9 +419,9 @@ footer a { color:var(--gold); text-decoration:none; }
     <div class="chat-messages" id="chat-messages">
       <div class="msg assistant">
         <div class="bubble">
-          ⚖️ مرحباً بك في المستشار القانوني المغربي الذكي!<br>
-          يمكنني مساعدتك في الأسئلة المتعلقة بالقانون المغربي: مدونة الأسرة، قانون الشغل، العقود، والقانون التجاري.<br>
-          اكتب سؤالك وسأجيبك فوراً! 🇲🇦
+          ⚖️ مرحباً بك في <strong>Haqqi — حقي</strong>!<br>
+          حقك في يدك 🇲🇦 يمكنني مساعدتك في الأسئلة المتعلقة بالقانون المغربي: مدونة الأسرة، قانون الشغل، العقود، والقانون التجاري.<br>
+          اكتب سؤالك وسأجيبك فوراً!
         </div>
       </div>
     </div>
@@ -708,8 +711,8 @@ footer a { color:var(--gold); text-decoration:none; }
     <a href="#" class="t" data-ar="الشروط والأحكام" data-fr="Conditions d'utilisation">الشروط والأحكام</a>
     <a href="#" class="t" data-ar="تواصل معنا" data-fr="Nous contacter">تواصل معنا</a>
   </div>
-  <p>© 2024 المستشار القانوني المغربي | Conseiller Juridique Marocain</p>
-  <p style="margin-top:6px;font-size:11px">مدعوم بتقنية الذكاء الاصطناعي Claude | Propulsé par l'IA Claude</p>
+  <p>© 2024 <strong style="color:var(--gold)">Haqqi — حقي</strong> | haqqi.ma</p>
+  <p style="margin-top:6px;font-size:11px">حقك في يدك 🇲🇦 | Propulsé par l'IA Claude</p>
 </footer>
 
 <!-- ══════════════ SUBSCRIPTION MODAL ══════════════ -->
@@ -717,8 +720,8 @@ footer a { color:var(--gold); text-decoration:none; }
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div style="font-size:40px;margin-bottom:12px">⚖️</div>
-    <h2 class="t" data-ar="اختر باقتك" data-fr="Choisissez votre plan">اختر باقتك</h2>
-    <p class="t" data-ar="انضم لآلاف المغاربة الذين يستخدمون المستشار القانوني الذكي للحصول على حقوقهم" data-fr="Rejoignez des milliers de Marocains qui utilisent notre conseiller juridique intelligent">انضم لآلاف المغاربة الذين يستخدمون المستشار القانوني الذكي</p>
+    <h2 class="t" data-ar="اشترك في Haqqi" data-fr="Abonnez-vous à Haqqi">اشترك في Haqqi</h2>
+    <p class="t" data-ar="حقك في يدك — انضم لآلاف المغاربة على منصة Haqqi" data-fr="Votre droit, vos mains — Rejoignez des milliers de Marocains sur Haqqi">حقك في يدك — انضم لآلاف المغاربة على منصة Haqqi</p>
     <div class="modal-plans">
       <button class="modal-plan-btn gold">
         <span>⭐ Premium</span>
@@ -1178,10 +1181,9 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.lang-btn')[lang === 'ar' ? 0 : 1].classList.add('active');
 
-  document.getElementById('site-title').textContent =
-    lang === 'ar' ? 'المستشار القانوني المغربي' : 'Conseiller Juridique Marocain';
+  document.getElementById('site-title-ar').textContent = lang === 'ar' ? 'حقي' : 'Mon Droit';
   document.getElementById('site-sub').textContent =
-    lang === 'ar' ? 'مدعوم بالذكاء الاصطناعي • استشارات فورية' : 'Propulsé par l\'IA • Consultations instantanées';
+    lang === 'ar' ? 'حقك في يدك • استشارات قانونية ذكية 🇲🇦' : 'Votre droit, vos mains • Conseils juridiques intelligents 🇲🇦';
   document.getElementById('btn-upgrade').textContent =
     lang === 'ar' ? 'اشترك الآن' : 'S\'abonner';
   document.getElementById('chat-input').placeholder =
