@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="المستشار القانوني المغربي - استشارات قانونية ذكية مدعومة بالذكاء الاصطناعي"/>
+<meta name="theme-color" content="#8B0000"/>
+<link rel="manifest" href="manifest.json"/>
+<title>⚖️ المستشار القانوني المغربي</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold: #C8A96E;
+  --red: #8B0000;
+  --dark: #0a1628;
+  --dark2: #12223a;
+  --text: #e8dcc8;
+  --muted: #7a8fa0;
+  --border: rgba(200,169,110,0.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'Amiri', serif;
+  min-height: 100vh;
+  direction: rtl;
+}
+body.fr { direction: ltr; font-family: 'Cormorant Garamond', Georgia, serif; }
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0a1628}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ─── HEADER ─── */
+header {
+  background: linear-gradient(135deg, #6b0000 0%, #8B0000 40%, #a0192c 70%, #6b0000 100%);
+  position: sticky; top:0; z-index:100;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+.header-top {
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 12px 24px; flex-wrap:wrap; gap:10px;
+}
+.logo { display:flex; align-items:center; gap:12px; }
+.logo-icon { font-size:32px; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+.logo-text h1 { font-size:20px; color:#fff; font-weight:700; }
+.logo-text p { font-size:11px; color:var(--gold); letter-spacing:2px; }
+.header-actions { display:flex; gap:8px; align-items:center; }
+.lang-btn {
+  padding:6px 16px; border-radius:20px; border:2px solid rgba(255,255,255,0.3);
+  background:transparent; color:#fff; cursor:pointer; font-size:13px;
+  transition:all .2s; font-family:inherit;
+}
+.lang-btn.active { background:var(--gold); border-color:var(--gold); color:#0a1628; font-weight:700; }
+.header-strip { height:3px; background:linear-gradient(90deg, var(--gold), #fff, var(--gold)); }
+
+/* ─── NAV TABS ─── */
+nav {
+  background: rgba(0,0,0,0.5);
+  display:flex; justify-content:center; gap:4px;
+  padding:10px 16px; flex-wrap:wrap;
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(10px);
+}
+.tab-btn {
+  padding:9px 20px; border-radius:10px; border:none;
+  background:rgba(255,255,255,0.04); color:var(--muted);
+  cursor:pointer; font-size:14px; font-family:inherit;
+  transition:all .25s; display:flex; align-items:center; gap:6px;
+}
+.tab-btn:hover { background:rgba(200,169,110,0.1); color:var(--gold); }
+.tab-btn.active {
+  background:linear-gradient(135deg,var(--red),#b8892e);
+  color:#fff; font-weight:700;
+  box-shadow:0 4px 15px rgba(139,0,0,0.4);
+}
+
+/* ─── MAIN ─── */
+main { max-width:960px; margin:0 auto; padding:24px 16px; }
+
+/* ─── BANNER AD (Placeholder) ─── */
+.ad-banner {
+  background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(139,0,0,0.08));
+  border: 1px dashed var(--border);
+  border-radius:12px; padding:14px 20px;
+  text-align:center; margin-bottom:20px;
+  color:var(--muted); font-size:13px;
+  cursor:pointer; transition:all .2s;
+}
+.ad-banner:hover { border-color:var(--gold); color:var(--gold); }
+
+/* ─── PRICING SECTION ─── */
+.pricing-bar {
+  display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;
+}
+.plan-card {
+  flex:1; min-width:200px;
+  border-radius:16px; padding:20px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,0.3);
+  text-align:center; position:relative;
+  transition:transform .2s;
+}
+.plan-card:hover { transform:translateY(-3px); }
+.plan-card.popular {
+  border-color:var(--gold);
+  background:linear-gradient(135deg,rgba(139,0,0,0.2),rgba(200,169,110,0.1));
+}
+.plan-badge {
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:var(--gold); color:#0a1628;
+  padding:3px 14px; border-radius:20px; font-size:11px; font-weight:700;
+}
+.plan-name { font-size:16px; font-weight:700; color:var(--gold); margin-bottom:6px; }
+.plan-price { font-size:28px; font-weight:700; color:#fff; margin:8px 0; }
+.plan-price span { font-size:13px; color:var(--muted); }
+.plan-features { list-style:none; text-align:right; margin:12px 0; }
+body.fr .plan-features { text-align:left; }
+.plan-features li { font-size:13px; color:var(--muted); padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+.plan-features li::before { content:"✓ "; color:var(--gold); }
+.plan-btn {
+  width:100%; padding:10px; border-radius:10px; border:none;
+  font-family:inherit; font-size:14px; cursor:pointer;
+  font-weight:700; transition:all .2s; margin-top:10px;
+}
+.plan-btn.free { background:rgba(255,255,255,0.08); color:var(--text); }
+.plan-btn.premium { background:linear-gradient(135deg,var(--red),var(--gold)); color:#fff; }
+.plan-btn:hover { opacity:.85; transform:translateY(-1px); }
+
+/* ─── CHAT ─── */
+.chat-wrap { display:flex; flex-direction:column; height:520px; }
+.chat-suggestions { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+.suggestion-btn {
+  padding:7px 14px; border-radius:16px; cursor:pointer; font-size:12px;
+  border:1px solid rgba(200,169,110,0.4); background:rgba(200,169,110,0.08);
+  color:var(--gold); font-family:inherit; transition:all .2s;
+}
+.suggestion-btn:hover { background:rgba(200,169,110,0.2); }
+.chat-messages {
+  flex:1; overflow-y:auto; padding:16px; display:flex;
+  flex-direction:column; gap:14px;
+  background:rgba(0,0,0,0.3); border-radius:16px;
+  border:1px solid var(--border); margin-bottom:12px;
+}
+.msg { display:flex; max-width:82%; }
+.msg.user { justify-content:flex-end; margin-right:auto; margin-left:0; }
+body.fr .msg.user { margin-left:auto; margin-right:0; }
+.msg.assistant { justify-content:flex-start; }
+.bubble {
+  padding:12px 16px; border-radius:16px;
+  font-size:14px; line-height:1.8; white-space:pre-wrap;
+}
+.msg.user .bubble {
+  background:linear-gradient(135deg,#7a0000,#a01520);
+  border-radius:16px 4px 16px 16px; color:#fff;
+}
+.msg.assistant .bubble {
+  background:rgba(200,169,110,0.1);
+  border:1px solid rgba(200,169,110,0.25);
+  border-radius:4px 16px 16px 16px; color:var(--text);
+}
+.typing { display:flex; gap:5px; align-items:center; padding:4px 0; }
+.dot { width:7px; height:7px; border-radius:50%; background:var(--gold); animation:bounce .8s infinite; }
+.dot:nth-child(2){animation-delay:.15s} .dot:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,80%,100%{transform:scale(0.7)}40%{transform:scale(1)}}
+.chat-input-row { display:flex; gap:10px; }
+.chat-input {
+  flex:1; padding:14px 18px; border-radius:12px;
+  border:1px solid rgba(200,169,110,0.35); background:rgba(255,255,255,0.04);
+  color:var(--text); font-size:14px; font-family:inherit; outline:none;
+  transition:border-color .2s;
+}
+.chat-input:focus { border-color:var(--gold); }
+.chat-input::placeholder { color:var(--muted); }
+.send-btn {
+  padding:14px 22px; border-radius:12px; border:none;
+  background:linear-gradient(135deg,var(--red),var(--gold));
+  color:#fff; font-weight:700; cursor:pointer; font-size:16px;
+  transition:all .2s; font-family:inherit;
+}
+.send-btn:hover { opacity:.85; transform:translateY(-1px); }
+.send-btn:disabled { opacity:.5; cursor:not-allowed; }
+.chat-disclaimer {
+  text-align:center; font-size:11px; color:var(--muted); margin-top:8px;
+}
+
+/* ─── PREMIUM WALL ─── */
+.premium-wall {
+  background:rgba(200,169,110,0.06); border:1px solid var(--border);
+  border-radius:14px; padding:20px; text-align:center; margin-top:12px;
+  display:none;
+}
+.premium-wall h3 { color:var(--gold); margin-bottom:8px; }
+.premium-wall p { color:var(--muted); font-size:13px; margin-bottom:12px; }
+
+/* ─── LAWS ─── */
+.laws-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+.law-card {
+  background:rgba(0,0,0,0.3); border-radius:16px; padding:20px;
+  border:1px solid var(--border); transition:transform .2s;
+  position:relative; overflow:hidden;
+}
+.law-card::before {
+  content:''; position:absolute; top:0; right:0; width:4px; height:100%;
+}
+.law-card:hover { transform:translateY(-3px); }
+.law-code {
+  display:inline-block; padding:3px 12px; border-radius:20px;
+  font-size:11px; font-weight:700; letter-spacing:1px; margin-bottom:10px;
+}
+.law-title { color:var(--text); font-size:15px; font-weight:700; margin-bottom:8px; }
+.law-desc { color:var(--muted); font-size:13px; line-height:1.7; }
+
+/* ─── TEMPLATES ─── */
+.templates-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; }
+.template-card {
+  background:rgba(0,0,0,0.3); border:1px solid var(--border);
+  border-radius:14px; padding:24px 16px; text-align:center;
+  cursor:pointer; transition:all .2s;
+}
+.template-card:hover { border-color:var(--gold); transform:translateY(-3px); background:rgba(200,169,110,0.08); }
+.template-icon { font-size:36px; margin-bottom:12px; }
+.template-name { color:var(--gold); font-size:14px; font-weight:700; }
+.template-view {
+  display:none; flex-direction:column; gap:14px;
+}
+.template-view.active { display:flex; }
+.back-btn {
+  padding:9px 20px; border-radius:10px; border:1px solid rgba(200,169,110,0.4);
+  background:transparent; color:var(--gold); cursor:pointer;
+  font-family:inherit; font-size:14px; align-self:flex-start;
+}
+.template-lang-switch { display:flex; gap:8px; }
+.tlang-btn {
+  padding:6px 16px; border-radius:8px; border:1px solid var(--border);
+  background:transparent; color:var(--muted); cursor:pointer;
+  font-family:inherit; font-size:12px; transition:all .2s;
+}
+.tlang-btn.active { border-color:var(--gold); color:var(--gold); background:rgba(200,169,110,0.1); }
+textarea.tpl-content {
+  width:100%; min-height:360px; background:rgba(0,0,0,0.4);
+  border:1px solid var(--border); border-radius:12px; padding:20px;
+  color:var(--text); font-size:14px; line-height:2.1; resize:vertical;
+  font-family:'Amiri',serif;
+}
+.copy-btn {
+  padding:11px 24px; border-radius:10px; border:none;
+  background:linear-gradient(135deg,var(--red),var(--gold));
+  color:#fff; cursor:pointer; font-weight:700;
+  font-size:14px; font-family:inherit; align-self:flex-start;
+  transition:all .2s;
+}
+.copy-btn:hover { opacity:.85; }
+
+/* ─── LAWYERS ─── */
+.lawyers-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px; }
+.lawyer-card {
+  background:rgba(0,0,0,0.3); border:1px solid var(--border);
+  border-radius:16px; padding:20px; border-top:3px solid var(--gold);
+  transition:transform .2s;
+}
+.lawyer-card:hover { transform:translateY(-3px); }
+.lawyer-header { display:flex; gap:12px; align-items:center; margin-bottom:14px; }
+.lawyer-avatar {
+  width:48px; height:48px; border-radius:50%;
+  background:linear-gradient(135deg,var(--red),var(--gold));
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; flex-shrink:0;
+}
+.lawyer-name { font-weight:700; font-size:14px; color:var(--text); line-height:1.4; }
+.lawyer-city { font-size:12px; color:var(--muted); margin-top:2px; }
+.lawyer-specialty {
+  background:rgba(200,169,110,0.1); border:1px solid rgba(200,169,110,0.2);
+  border-radius:8px; padding:8px 12px; color:var(--gold);
+  font-size:13px; margin-bottom:12px;
+}
+.lawyer-footer { display:flex; justify-content:space-between; align-items:center; }
+.stars { color:#f4c430; font-size:14px; }
+.lawyer-phone { color:var(--muted); font-size:12px; }
+.contact-btn {
+  width:100%; padding:10px; border-radius:10px; border:none;
+  background:rgba(139,0,0,0.3); border:1px solid rgba(139,0,0,0.5);
+  color:var(--gold); cursor:pointer; font-family:inherit;
+  font-size:13px; margin-top:10px; transition:all .2s;
+}
+.contact-btn:hover { background:rgba(139,0,0,0.6); }
+
+/* ─── SECTION TITLES ─── */
+.section-title {
+  text-align:center; color:var(--gold); font-size:22px;
+  margin-bottom:22px; font-weight:700;
+  position:relative; padding-bottom:12px;
+}
+.section-title::after {
+  content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  width:60px; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+/* ─── TABS CONTENT ─── */
+.tab-content { display:none; animation: fadeIn .3s ease; }
+.tab-content.active { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── FOOTER ─── */
+footer {
+  background:rgba(0,0,0,0.5); border-top:1px solid var(--border);
+  text-align:center; padding:24px 16px; margin-top:40px;
+  color:var(--muted); font-size:13px;
+}
+footer a { color:var(--gold); text-decoration:none; }
+.footer-links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:12px; }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.7); backdrop-filter:blur(5px);
+  z-index:999; align-items:center; justify-content:center;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background:var(--dark2); border:1px solid var(--border);
+  border-radius:20px; padding:32px; max-width:440px; width:90%;
+  text-align:center; position:relative;
+}
+.modal h2 { color:var(--gold); font-size:22px; margin-bottom:12px; }
+.modal p { color:var(--muted); font-size:14px; line-height:1.8; margin-bottom:20px; }
+.modal-close {
+  position:absolute; top:14px; left:14px;
+  background:rgba(255,255,255,0.08); border:none; color:var(--text);
+  width:30px; height:30px; border-radius:50%; cursor:pointer; font-size:16px;
+}
+.modal-plans { display:flex; flex-direction:column; gap:10px; }
+.modal-plan-btn {
+  padding:14px; border-radius:12px; border:1px solid var(--border);
+  cursor:pointer; font-family:inherit; font-size:14px;
+  transition:all .2s; display:flex; justify-content:space-between; align-items:center;
+}
+.modal-plan-btn.gold { background:linear-gradient(135deg,var(--red),var(--gold)); color:#fff; border:none; font-weight:700; }
+.modal-plan-btn.silver { background:rgba(255,255,255,0.04); color:var(--text); }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:600px){
+  .header-top { padding:10px 14px; }
+  .logo-text h1 { font-size:16px; }
+  .pricing-bar { flex-direction:column; }
+  .plan-card { min-width:100%; }
+  main { padding:16px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div class="logo">
+      <span class="logo-icon">⚖️</span>
+      <div class="logo-text">
+        <h1 id="site-title">المستشار القانوني المغربي</h1>
+        <p id="site-sub">مدعوم بالذكاء الاصطناعي • استشارات فورية</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="lang-btn active" onclick="setLang('ar')">عربي</button>
+      <button class="lang-btn" onclick="setLang('fr')">Français</button>
+      <button class="plan-btn premium" style="padding:8px 18px;border-radius:20px;font-size:13px" onclick="openModal()">
+        ⭐ <span id="btn-upgrade">اشترك الآن</span>
+      </button>
+    </div>
+  </div>
+  <div class="header-strip"></div>
+</header>
+
+<!-- NAV TABS -->
+<nav>
+  <button class="tab-btn active" onclick="showTab('chat')">
+    <span>💬</span><span class="t" data-ar="المستشار الذكي" data-fr="Conseiller IA">المستشار الذكي</span>
+  </button>
+  <button class="tab-btn" onclick="showTab('laws')">
+    <span>📜</span><span class="t" data-ar="القوانين" data-fr="Les Lois">القوانين</span>
+  </button>
+  <button class="tab-btn" onclick="showTab('templates')">
+    <span>📋</span><span class="t" data-ar="النماذج" data-fr="Modèles">النماذج</span>
+  </button>
+  <button class="tab-btn" onclick="showTab('lawyers')">
+    <span>👤</span><span class="t" data-ar="دليل المحامين" data-fr="Avocats">دليل المحامين</span>
+  </button>
+  <button class="tab-btn" onclick="showTab('pricing')">
+    <span>💎</span><span class="t" data-ar="الاشتراكات" data-fr="Abonnements">الاشتراكات</span>
+  </button>
+</nav>
+
+<main>
+
+<!-- ══════════════ CHAT TAB ══════════════ -->
+<div id="tab-chat" class="tab-content active">
+  <!-- Ad Banner -->
+  <div class="ad-banner" onclick="openModal()">
+    🏛️ <span class="t" data-ar="هل تحتاج محامياً حقيقياً؟ تواصل مع محامين معتمدين في المغرب ← اضغط هنا" data-fr="Besoin d'un vrai avocat? Contactez des avocats agréés au Maroc ← Cliquez ici">هل تحتاج محامياً حقيقياً؟ تواصل مع محامين معتمدين في المغرب ← اضغط هنا</span>
+  </div>
+
+  <div class="chat-wrap">
+    <!-- Suggestions -->
+    <div class="chat-suggestions" id="suggestions">
+      <button class="suggestion-btn" onclick="fillInput(this.textContent)">ما هي حقوق المستأجر؟</button>
+      <button class="suggestion-btn" onclick="fillInput(this.textContent)">كيف أطلب الطلاق؟</button>
+      <button class="suggestion-btn" onclick="fillInput(this.textContent)">ما هي تعويضات الفصل؟</button>
+      <button class="suggestion-btn" onclick="fillInput(this.textContent)">كيف أسجل شركتي؟</button>
+    </div>
+
+    <!-- Messages -->
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg assistant">
+        <div class="bubble">
+          ⚖️ مرحباً بك في المستشار القانوني المغربي الذكي!<br>
+          يمكنني مساعدتك في الأسئلة المتعلقة بالقانون المغربي: مدونة الأسرة، قانون الشغل، العقود، والقانون التجاري.<br>
+          اكتب سؤالك وسأجيبك فوراً! 🇲🇦
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input-row">
+      <input class="chat-input" id="chat-input" type="text"
+        placeholder="اكتب سؤالك القانوني هنا..."
+        onkeydown="if(event.key==='Enter') sendMessage()"/>
+      <button class="send-btn" id="send-btn" onclick="sendMessage()">إرسال ←</button>
+    </div>
+    <p class="chat-disclaimer">
+      ⚠️ <span class="t" data-ar="هذه معلومات عامة وليست استشارة قانونية رسمية. للمسائل المعقدة راجع محامياً معتمداً." data-fr="Informations générales uniquement. Pour les cas complexes, consultez un avocat agréé.">هذه معلومات عامة وليست استشارة قانونية رسمية.</span>
+    </p>
+
+    <!-- Free limit wall -->
+    <div class="premium-wall" id="premium-wall">
+      <h3>🔒 <span class="t" data-ar="لقد استنفدت استشاراتك المجانية" data-fr="Vous avez épuisé vos consultations gratuites">لقد استنفدت استشاراتك المجانية</span></h3>
+      <p class="t" data-ar="اشترك في الباقة المميزة للحصول على استشارات غير محدودة" data-fr="Abonnez-vous pour des consultations illimitées">اشترك في الباقة المميزة للحصول على استشارات غير محدودة</p>
+      <button class="plan-btn premium" onclick="openModal()">⭐ <span class="t" data-ar="اشترك الآن - 49 درهم/شهر" data-fr="S'abonner - 49 DH/mois">اشترك الآن - 49 درهم/شهر</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ LAWS TAB ══════════════ -->
+<div id="tab-laws" class="tab-content">
+  <h2 class="section-title t" data-ar="القوانين المغربية الأساسية" data-fr="Principales Lois Marocaines">القوانين المغربية الأساسية</h2>
+  <div class="laws-grid">
+    <div class="law-card" style="border-right:4px solid #C8A96E">
+      <div class="law-code" style="background:rgba(200,169,110,0.15);color:#C8A96E">Q.O.C</div>
+      <div class="law-title t" data-ar="قانون الالتزامات والعقود" data-fr="Code des Obligations et Contrats">قانون الالتزامات والعقود</div>
+      <div class="law-desc t" data-ar="ينظم العلاقات التعاقدية والمدنية بين الأفراد والشركات في المغرب. يشمل عقود البيع والإيجار والقرض." data-fr="Régit les relations contractuelles entre particuliers et entreprises. Inclut vente, location et prêt.">ينظم العلاقات التعاقدية والمدنية بين الأفراد والشركات في المغرب.</div>
+    </div>
+    <div class="law-card" style="border-right:4px solid #8B0000">
+      <div class="law-code" style="background:rgba(139,0,0,0.2);color:#ff6666">C.P</div>
+      <div class="law-title t" data-ar="القانون الجنائي" data-fr="Code Pénal">القانون الجنائي</div>
+      <div class="law-desc t" data-ar="يحدد الجرائم والعقوبات المقررة في القانون المغربي. يشمل الجنايات والجنح والمخالفات." data-fr="Définit les infractions et peines. Couvre crimes, délits et contraventions.">يحدد الجرائم والعقوبات المقررة في القانون المغربي.</div>
+    </div>
+    <div class="law-card" style="border-right:4px solid #2E5D4B">
+      <div class="law-code" style="background:rgba(46,93,75,0.2);color:#5cb890">M.O.F</div>
+      <div class="law-title t" data-ar="مدونة الأسرة (المدونة)" data-fr="Code de la Famille (Moudawwana)">مدونة الأسرة</div>
+      <div class="law-desc t" data-ar="تنظم الزواج والطلاق والحضانة والنفقة والميراث في المغرب وفق أحكام الشريعة الإسلامية." data-fr="Régit mariage, divorce, garde, pension alimentaire et héritage selon la charia.">تنظم الزواج والطلاق والحضانة والميراث في المغرب.</div>
+    </div>
+    <div class="law-card" style="border-right:4px solid #1A3A5C">
+      <div class="law-code" style="background:rgba(26,58,92,0.3);color:#5b8fcf">C.T</div>
+      <div class="law-title t" data-ar="مدونة الشغل" data-fr="Code du Travail">مدونة الشغل</div>
+      <div class="law-desc t" data-ar="تضمن حقوق العمال وتنظم علاقة الشغل: الأجر، الإجازات، الفصل، والتعويضات." data-fr="Garantit les droits des travailleurs: salaire, congés, licenciement et indemnités.">تضمن حقوق العمال وتنظم علاقات الشغل في المقاولات.</div>
+    </div>
+    <div class="law-card" style="border-right:4px solid #4A2060">
+      <div class="law-code" style="background:rgba(74,32,96,0.2);color:#b07ad0">C.C</div>
+      <div class="law-title t" data-ar="القانون التجاري" data-fr="Code de Commerce">القانون التجاري</div>
+      <div class="law-desc t" data-ar="ينظم الأنشطة التجارية وتأسيس الشركات والإفلاس والتصفية القضائية." data-fr="Régit activités commerciales, création de sociétés, faillite et liquidation.">ينظم الأنشطة التجارية وتأسيس الشركات والإفلاس.</div>
+    </div>
+    <div class="law-card" style="border-right:4px solid #5C3A1A">
+      <div class="law-code" style="background:rgba(92,58,26,0.2);color:#d09050">C.P.C</div>
+      <div class="law-title t" data-ar="قانون المسطرة المدنية" data-fr="Code de Procédure Civile">قانون المسطرة المدنية</div>
+      <div class="law-desc t" data-ar="يحدد الإجراءات القضائية أمام المحاكم المدنية: رفع الدعاوى، الطعون، والتنفيذ." data-fr="Détermine les procédures judiciaires: recours, appels et exécution des jugements.">يحدد الإجراءات القضائية أمام المحاكم المدنية.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ TEMPLATES TAB ══════════════ -->
+<div id="tab-templates" class="tab-content">
+  <h2 class="section-title t" data-ar="النماذج القانونية الجاهزة" data-fr="Modèles Juridiques Prêts">النماذج القانونية الجاهزة</h2>
+
+  <!-- Grid -->
+  <div class="templates-grid" id="templates-grid">
+    <div class="template-card" onclick="showTemplate(0)">
+      <div class="template-icon">🏠</div>
+      <div class="template-name t" data-ar="عقد الإيجار" data-fr="Contrat de Location">عقد الإيجار</div>
+    </div>
+    <div class="template-card" onclick="showTemplate(1)">
+      <div class="template-icon">💼</div>
+      <div class="template-name t" data-ar="عقد الشغل" data-fr="Contrat de Travail">عقد الشغل</div>
+    </div>
+    <div class="template-card" onclick="showTemplate(2)">
+      <div class="template-icon">🤝</div>
+      <div class="template-name t" data-ar="وكالة عامة" data-fr="Procuration Générale">وكالة عامة</div>
+    </div>
+    <div class="template-card" onclick="showTemplate(3)">
+      <div class="template-icon">🏢</div>
+      <div class="template-name t" data-ar="عقد تأسيس شركة" data-fr="Acte de Création SARL">عقد تأسيس شركة</div>
+    </div>
+    <div class="template-card" onclick="showTemplate(4)">
+      <div class="template-icon">📝</div>
+      <div class="template-name t" data-ar="إعذار قانوني" data-fr="Mise en Demeure">إعذار قانوني</div>
+    </div>
+    <div class="template-card" onclick="showTemplate(5)">
+      <div class="template-icon">⚖️</div>
+      <div class="template-name t" data-ar="مقال في الطلاق" data-fr="Requête en Divorce">مقال في الطلاق</div>
+    </div>
+  </div>
+
+  <!-- Template View -->
+  <div class="template-view" id="template-view">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <button class="back-btn" onclick="hideTemplate()">← <span class="t" data-ar="رجوع" data-fr="Retour">رجوع</span></button>
+      <h3 id="tpl-title" style="color:var(--gold)"></h3>
+      <div class="template-lang-switch" style="margin-right:auto">
+        <button class="tlang-btn active" onclick="switchTplLang('ar')">عربي</button>
+        <button class="tlang-btn" onclick="switchTplLang('fr')">Français</button>
+      </div>
+    </div>
+    <textarea class="tpl-content" id="tpl-content" readonly></textarea>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="copy-btn" onclick="copyTemplate()">📋 <span class="t" data-ar="نسخ النموذج" data-fr="Copier le modèle">نسخ النموذج</span></button>
+      <button class="copy-btn" style="background:linear-gradient(135deg,#1a3a5c,#2a6a9c)" onclick="openModal()">⬇️ <span class="t" data-ar="تنزيل PDF - مميز" data-fr="Télécharger PDF - Premium">تنزيل PDF - مميز</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ LAWYERS TAB ══════════════ -->
+<div id="tab-lawyers" class="tab-content">
+  <h2 class="section-title t" data-ar="دليل المحامين في المغرب" data-fr="Annuaire des Avocats au Maroc">دليل المحامين في المغرب</h2>
+  <div class="lawyers-grid">
+    <div class="lawyer-card">
+      <div class="lawyer-header">
+        <div class="lawyer-avatar">👨‍⚖️</div>
+        <div>
+          <div class="lawyer-name">ذ. محمد بنعلي / Me Mohamed Benali</div>
+          <div class="lawyer-city">📍 الدار البيضاء / Casablanca</div>
+        </div>
+      </div>
+      <div class="lawyer-specialty t" data-ar="⚖️ قانون الأعمال والشركات" data-fr="⚖️ Droit des affaires et des sociétés">⚖️ قانون الأعمال والشركات</div>
+      <div class="lawyer-footer">
+        <div class="stars">★★★★★</div>
+        <div class="lawyer-phone">+212 522 XXX XXX</div>
+      </div>
+      <button class="contact-btn" onclick="openModal()">📞 <span class="t" data-ar="تواصل — مميز" data-fr="Contacter — Premium">تواصل — مميز</span></button>
+    </div>
+    <div class="lawyer-card">
+      <div class="lawyer-header">
+        <div class="lawyer-avatar">👩‍⚖️</div>
+        <div>
+          <div class="lawyer-name">ذ. فاطمة العلوي / Me Fatima Alaoui</div>
+          <div class="lawyer-city">📍 الرباط / Rabat</div>
+        </div>
+      </div>
+      <div class="lawyer-specialty t" data-ar="⚖️ مدونة الأسرة والأحوال الشخصية" data-fr="⚖️ Droit de la famille et statut personnel">⚖️ مدونة الأسرة والأحوال الشخصية</div>
+      <div class="lawyer-footer">
+        <div class="stars">★★★★★</div>
+        <div class="lawyer-phone">+212 537 XXX XXX</div>
+      </div>
+      <button class="contact-btn" onclick="openModal()">📞 <span class="t" data-ar="تواصل — مميز" data-fr="Contacter — Premium">تواصل — مميز</span></button>
+    </div>
+    <div class="lawyer-card">
+      <div class="lawyer-header">
+        <div class="lawyer-avatar">👨‍⚖️</div>
+        <div>
+          <div class="lawyer-name">ذ. يوسف الإدريسي / Me Youssef Idrissi</div>
+          <div class="lawyer-city">📍 مراكش / Marrakech</div>
+        </div>
+      </div>
+      <div class="lawyer-specialty t" data-ar="⚖️ القانون العقاري والاستثمار" data-fr="⚖️ Droit immobilier et investissement">⚖️ القانون العقاري والاستثمار</div>
+      <div class="lawyer-footer">
+        <div class="stars">★★★★☆</div>
+        <div class="lawyer-phone">+212 524 XXX XXX</div>
+      </div>
+      <button class="contact-btn" onclick="openModal()">📞 <span class="t" data-ar="تواصل — مميز" data-fr="Contacter — Premium">تواصل — مميز</span></button>
+    </div>
+    <div class="lawyer-card">
+      <div class="lawyer-header">
+        <div class="lawyer-avatar">👩‍⚖️</div>
+        <div>
+          <div class="lawyer-name">ذ. أمينة شكير / Me Amina Chekir</div>
+          <div class="lawyer-city">📍 فاس / Fès</div>
+        </div>
+      </div>
+      <div class="lawyer-specialty t" data-ar="⚖️ قانون الشغل والنزاعات" data-fr="⚖️ Droit du travail et litiges">⚖️ قانون الشغل والنزاعات</div>
+      <div class="lawyer-footer">
+        <div class="stars">★★★★☆</div>
+        <div class="lawyer-phone">+212 535 XXX XXX</div>
+      </div>
+      <button class="contact-btn" onclick="openModal()">📞 <span class="t" data-ar="تواصل — مميز" data-fr="Contacter — Premium">تواصل — مميز</span></button>
+    </div>
+    <div class="lawyer-card">
+      <div class="lawyer-header">
+        <div class="lawyer-avatar">👨‍⚖️</div>
+        <div>
+          <div class="lawyer-name">ذ. عمر الحسني / Me Omar El Hassani</div>
+          <div class="lawyer-city">📍 طنجة / Tanger</div>
+        </div>
+      </div>
+      <div class="lawyer-specialty t" data-ar="⚖️ القانون الجنائي والدفاع" data-fr="⚖️ Droit pénal et défense">⚖️ القانون الجنائي والدفاع</div>
+      <div class="lawyer-footer">
+        <div class="stars">★★★★★</div>
+        <div class="lawyer-phone">+212 539 XXX XXX</div>
+      </div>
+      <button class="contact-btn" onclick="openModal()">📞 <span class="t" data-ar="تواصل — مميز" data-fr="Contacter — Premium">تواصل — مميز</span></button>
+    </div>
+    <div class="lawyer-card">
+      <div class="lawyer-header">
+        <div class="lawyer-avatar">👩‍⚖️</div>
+        <div>
+          <div class="lawyer-name">ذ. سارة المنصوري / Me Sara Mansouri</div>
+          <div class="lawyer-city">📍 أكادير / Agadir</div>
+        </div>
+      </div>
+      <div class="lawyer-specialty t" data-ar="⚖️ القانون التجاري والجمارك" data-fr="⚖️ Droit commercial et douanes">⚖️ القانون التجاري والجمارك</div>
+      <div class="lawyer-footer">
+        <div class="stars">★★★★☆</div>
+        <div class="lawyer-phone">+212 528 XXX XXX</div>
+      </div>
+      <button class="contact-btn" onclick="openModal()">📞 <span class="t" data-ar="تواصل — مميز" data-fr="Contacter — Premium">تواصل — مميز</span></button>
+    </div>
+  </div>
+  <div style="margin-top:20px;padding:16px;background:rgba(200,169,110,0.06);border:1px solid var(--border);border-radius:12px;text-align:center;color:var(--muted);font-size:12px">
+    ⚠️ <span class="t" data-ar="قائمة توضيحية. للتحقق من المحامين المعتمدين رسمياً راجع موقع هيئة المحامين المغاربة." data-fr="Liste illustrative. Pour vérifier les avocats agréés, consultez le site du Barreau du Maroc.">قائمة توضيحية.</span>
+  </div>
+</div>
+
+<!-- ══════════════ PRICING TAB ══════════════ -->
+<div id="tab-pricing" class="tab-content">
+  <h2 class="section-title t" data-ar="باقات الاشتراك" data-fr="Nos Abonnements">باقات الاشتراك</h2>
+  <div class="pricing-bar">
+    <div class="plan-card">
+      <div class="plan-name t" data-ar="المجاني" data-fr="Gratuit">المجاني</div>
+      <div class="plan-price">0 <span class="t" data-ar="درهم/شهر" data-fr="DH/mois">درهم/شهر</span></div>
+      <ul class="plan-features">
+        <li class="t" data-ar="3 استشارات يومياً" data-fr="3 consultations/jour">3 استشارات يومياً</li>
+        <li class="t" data-ar="القوانين الأساسية" data-fr="Lois de base">القوانين الأساسية</li>
+        <li class="t" data-ar="نموذج واحد" data-fr="1 modèle">نموذج واحد</li>
+      </ul>
+      <button class="plan-btn free">✓ <span class="t" data-ar="الباقة الحالية" data-fr="Plan actuel">الباقة الحالية</span></button>
+    </div>
+    <div class="plan-card popular">
+      <div class="plan-badge">⭐ <span class="t" data-ar="الأكثر طلباً" data-fr="Le plus populaire">الأكثر طلباً</span></div>
+      <div class="plan-name" style="color:#fff">Premium</div>
+      <div class="plan-price">49 <span class="t" data-ar="درهم/شهر" data-fr="DH/mois">درهم/شهر</span></div>
+      <ul class="plan-features">
+        <li class="t" data-ar="استشارات غير محدودة" data-fr="Consultations illimitées">استشارات غير محدودة</li>
+        <li class="t" data-ar="جميع النماذج القانونية" data-fr="Tous les modèles">جميع النماذج القانونية</li>
+        <li class="t" data-ar="تنزيل PDF" data-fr="Téléchargement PDF">تنزيل PDF</li>
+        <li class="t" data-ar="تواصل مع المحامين" data-fr="Contact avocats">تواصل مع المحامين</li>
+        <li class="t" data-ar="دعم أولوية" data-fr="Support prioritaire">دعم أولوية</li>
+      </ul>
+      <button class="plan-btn premium" onclick="openModal()">🚀 <span class="t" data-ar="اشترك الآن" data-fr="S'abonner">اشترك الآن</span></button>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name t" data-ar="للمحامين" data-fr="Pour Avocats">للمحامين</div>
+      <div class="plan-price">199 <span class="t" data-ar="درهم/شهر" data-fr="DH/mois">درهم/شهر</span></div>
+      <ul class="plan-features">
+        <li class="t" data-ar="كل مميزات Premium" data-fr="Tout Premium">كل مميزات Premium</li>
+        <li class="t" data-ar="ملف شخصي في الدليل" data-fr="Profil dans l'annuaire">ملف شخصي في الدليل</li>
+        <li class="t" data-ar="استقبال عملاء مباشرة" data-fr="Recevoir des clients">استقبال عملاء مباشرة</li>
+        <li class="t" data-ar="أدوات إدارة الملفات" data-fr="Gestion de dossiers">أدوات إدارة الملفات</li>
+      </ul>
+      <button class="plan-btn premium" onclick="openModal()">📩 <span class="t" data-ar="تواصل معنا" data-fr="Nous contacter">تواصل معنا</span></button>
+    </div>
+  </div>
+
+  <!-- Revenue model explanation -->
+  <div style="margin-top:30px;padding:24px;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:16px">
+    <h3 style="color:var(--gold);margin-bottom:16px;font-size:17px">💰 <span class="t" data-ar="كيف يدر الموقع دخلاً؟" data-fr="Comment le site génère des revenus?">كيف يدر الموقع دخلاً؟</span></h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px">
+      <div style="padding:16px;background:rgba(200,169,110,0.06);border-radius:12px;border:1px solid var(--border)">
+        <div style="font-size:24px;margin-bottom:8px">💎</div>
+        <div style="color:var(--gold);font-weight:700;margin-bottom:6px" class="t" data-ar="اشتراكات شهرية" data-fr="Abonnements mensuels">اشتراكات شهرية</div>
+        <div style="color:var(--muted);font-size:13px" class="t" data-ar="49-199 درهم/مشترك" data-fr="49-199 DH/abonné">49-199 درهم/مشترك</div>
+      </div>
+      <div style="padding:16px;background:rgba(200,169,110,0.06);border-radius:12px;border:1px solid var(--border)">
+        <div style="font-size:24px;margin-bottom:8px">👨‍⚖️</div>
+        <div style="color:var(--gold);font-weight:700;margin-bottom:6px" class="t" data-ar="ملفات المحامين" data-fr="Profils d'avocats">ملفات المحامين</div>
+        <div style="color:var(--muted);font-size:13px" class="t" data-ar="199 درهم/شهر للمحامي" data-fr="199 DH/mois par avocat">199 درهم/شهر للمحامي</div>
+      </div>
+      <div style="padding:16px;background:rgba(200,169,110,0.06);border-radius:12px;border:1px solid var(--border)">
+        <div style="font-size:24px;margin-bottom:8px">📢</div>
+        <div style="color:var(--gold);font-weight:700;margin-bottom:6px" class="t" data-ar="إعلانات مدفوعة" data-fr="Publicités payantes">إعلانات مدفوعة</div>
+        <div style="color:var(--muted);font-size:13px" class="t" data-ar="Google AdSense أو مباشر" data-fr="Google AdSense ou direct">Google AdSense أو مباشر</div>
+      </div>
+      <div style="padding:16px;background:rgba(200,169,110,0.06);border-radius:12px;border:1px solid var(--border)">
+        <div style="font-size:24px;margin-bottom:8px">📄</div>
+        <div style="color:var(--gold);font-weight:700;margin-bottom:6px" class="t" data-ar="بيع النماذج" data-fr="Vente de modèles">بيع النماذج</div>
+        <div style="color:var(--muted);font-size:13px" class="t" data-ar="نماذج PDF متخصصة" data-fr="Modèles PDF spécialisés">نماذج PDF متخصصة</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-links">
+    <a href="#" class="t" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+    <a href="#" class="t" data-ar="سياسة الخصوصية" data-fr="Politique de confidentialité">سياسة الخصوصية</a>
+    <a href="#" class="t" data-ar="الشروط والأحكام" data-fr="Conditions d'utilisation">الشروط والأحكام</a>
+    <a href="#" class="t" data-ar="تواصل معنا" data-fr="Nous contacter">تواصل معنا</a>
+  </div>
+  <p>© 2024 المستشار القانوني المغربي | Conseiller Juridique Marocain</p>
+  <p style="margin-top:6px;font-size:11px">مدعوم بتقنية الذكاء الاصطناعي Claude | Propulsé par l'IA Claude</p>
+</footer>
+
+<!-- ══════════════ SUBSCRIPTION MODAL ══════════════ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div style="font-size:40px;margin-bottom:12px">⚖️</div>
+    <h2 class="t" data-ar="اختر باقتك" data-fr="Choisissez votre plan">اختر باقتك</h2>
+    <p class="t" data-ar="انضم لآلاف المغاربة الذين يستخدمون المستشار القانوني الذكي للحصول على حقوقهم" data-fr="Rejoignez des milliers de Marocains qui utilisent notre conseiller juridique intelligent">انضم لآلاف المغاربة الذين يستخدمون المستشار القانوني الذكي</p>
+    <div class="modal-plans">
+      <button class="modal-plan-btn gold">
+        <span>⭐ Premium</span>
+        <span>49 <span class="t" data-ar="درهم/شهر" data-fr="DH/mois">درهم/شهر</span></span>
+      </button>
+      <button class="modal-plan-btn silver">
+        <span>👨‍⚖️ <span class="t" data-ar="للمحامين" data-fr="Pour Avocats">للمحامين</span></span>
+        <span>199 <span class="t" data-ar="درهم/شهر" data-fr="DH/mois">درهم/شهر</span></span>
+      </button>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:16px" class="t"
+       data-ar="💳 الدفع عبر CMI · Maroc Telecommerce · بطاقة بريدية"
+       data-fr="💳 Paiement via CMI · Maroc Telecommerce · Carte Postale">
+      💳 الدفع عبر CMI · Maroc Telecommerce · بطاقة بريدية
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════ SCRIPT ══════════════ -->
+<script>
+// ─── STATE ───
+let currentLang = 'ar';
+let msgCount = 0;
+const FREE_LIMIT = 3;
+let isPremium = false;
+let currentTplIdx = 0;
+let tplLang = 'ar';
+
+const SYSTEM_PROMPT = `أنت مستشار قانوني متخصص في القانون المغربي. تتحدث العربية والفرنسية بطلاقة.
+مهمتك تقديم معلومات قانونية مبسطة للمواطنين المغاربة بناءً على القوانين المغربية.
+دائماً أضف تنبيهاً صغيراً في نهاية ردك بأن هذه معلومات عامة وليست استشارة رسمية.
+أجب بنفس لغة السؤال (عربي أو فرنسي). كن واضحاً ومختصراً ومتعاطفاً.`;
+
+const TEMPLATES = [
+  {
+    icon:'🏠', ar:'عقد الإيجار', fr:'Contrat de Location',
+    content_ar:`عقد إيجار سكني
+═══════════════════════
+
+بين السادة:
+الطرف الأول (المؤجر): السيد/ة _______________
+رقم البطاقة الوطنية: _______________
+الساكن بـ: _______________
+
+الطرف الثاني (المستأجر): السيد/ة _______________
+رقم البطاقة الوطنية: _______________
+الساكن بـ: _______________
+
+المادة 1 - موضوع العقد:
+يؤجر الطرف الأول للطرف الثاني المحل السكني الكائن بـ:
+_______________
+
+المادة 2 - مدة الإيجار:
+تحدد مدة الإيجار بـ ___ سنة/أشهر
+ابتداءً من: _______________
+
+المادة 3 - الثمن:
+يتفق الطرفان على مبلغ إيجار شهري قدره: ___________ درهم
+يؤدى في الخامس من كل شهر.
+
+المادة 4 - الضمان:
+يدفع المستأجر وديعة ضمان بمبلغ: ___________ درهم
+تُرد عند انتهاء العقد في حالة سلامة المحل.
+
+المادة 5 - التزامات المستأجر:
+- المحافظة على المحل وصيانته
+- عدم التنازل عن الإيجار دون إذن كتابي
+- أداء الأعباء والضرائب المترتبة على المستأجر
+
+المادة 6 - التزامات المؤجر:
+- تسليم المحل في حالة صالحة للسكن
+- ضمان الاستمتاع الهادئ للمستأجر
+- القيام بالإصلاحات الكبرى
+
+حرر في: _______________ بتاريخ: _______________
+
+توقيع المؤجر: _______________
+توقيع المستأجر: _______________`,
+    content_fr:`Contrat de Location d'Habitation
+═══════════════════════
+
+Entre les soussignés:
+Partie I (Bailleur): M./Mme _______________
+CIN: _______________
+Demeurant à: _______________
+
+Partie II (Locataire): M./Mme _______________
+CIN: _______________
+Demeurant à: _______________
+
+Article 1 - Objet du contrat:
+Le bailleur loue au locataire le logement situé à:
+_______________
+
+Article 2 - Durée:
+La durée de la location est fixée à ___ an(s)/mois
+À compter du: _______________
+
+Article 3 - Loyer:
+Les parties conviennent d'un loyer mensuel de: ___________ DH
+Payable le 5 de chaque mois.
+
+Article 4 - Caution:
+Le locataire verse une caution de: ___________ DH
+Restituée à la fin du contrat si le bien est en bon état.
+
+Article 5 - Obligations du locataire:
+- Entretenir le logement
+- Ne pas sous-louer sans accord écrit
+- Payer les charges locatives
+
+Article 6 - Obligations du bailleur:
+- Livrer le bien en bon état
+- Garantir la jouissance paisible
+- Effectuer les grosses réparations
+
+Fait à: _______________ le: _______________
+
+Signature du Bailleur: _______________
+Signature du Locataire: _______________`
+  },
+  {
+    icon:'💼', ar:'عقد الشغل', fr:'Contrat de Travail',
+    content_ar:`عقد شغل محدد المدة
+═══════════════════════
+
+بين:
+المشغل: شركة/مقاولة _______________
+ممثلة بالسيد/ة: _______________ بصفته _______________
+
+والأجير: السيد/ة _______________
+رقم البطاقة الوطنية: _______________
+المقيم بـ: _______________
+
+المادة 1 - المنصب:
+يُعين الأجير في منصب: _______________
+تحت إشراف: _______________
+
+المادة 2 - مدة العقد:
+يبدأ هذا العقد بتاريخ: _______________
+وينتهي بتاريخ: _______________
+
+المادة 3 - الأجر:
+يتقاضى الأجير راتباً شهرياً صافياً قدره: ___________ درهم
+مع تعويضات (إن وجدت): _______________
+
+المادة 4 - ساعات العمل:
+44 ساعة في الأسبوع وفق مدونة الشغل المغربية.
+
+المادة 5 - الإجازة السنوية:
+يستفيد الأجير من إجازة سنوية مدفوعة الأجر وفق القانون.
+
+المادة 6 - فترة التجربة:
+تحدد فترة التجربة بـ: _______________
+
+حرر في: _______________ بتاريخ: _______________
+
+توقيع المشغل: _______________
+توقيع الأجير: _______________`,
+    content_fr:`Contrat de Travail à Durée Déterminée
+═══════════════════════
+
+Entre:
+L'employeur: Société _______________
+Représentée par: _______________ en qualité de _______________
+
+Et l'employé: M./Mme _______________
+CIN: _______________
+Domicilié à: _______________
+
+Article 1 - Poste:
+L'employé est engagé au poste de: _______________
+Sous la supervision de: _______________
+
+Article 2 - Durée:
+Le présent contrat prend effet le: _______________
+Et prend fin le: _______________
+
+Article 3 - Rémunération:
+L'employé percevra un salaire net mensuel de: ___________ DH
+Avec indemnités (si applicable): _______________
+
+Article 4 - Horaires:
+44 heures par semaine conformément au Code du Travail marocain.
+
+Article 5 - Congés annuels:
+L'employé bénéficie de congés payés conformément à la loi.
+
+Article 6 - Période d'essai:
+La période d'essai est fixée à: _______________
+
+Fait à: _______________ le: _______________
+
+Signature de l'Employeur: _______________
+Signature de l'Employé: _______________`
+  },
+  {
+    icon:'🤝', ar:'وكالة عامة', fr:'Procuration Générale',
+    content_ar:`وكالة عامة
+═══════════════════════
+
+أنا الممضي أسفله:
+الاسم الكامل: _______________
+رقم البطاقة الوطنية: _______________
+تاريخ الإصدار: _______________ مكان: _______________
+الساكن بـ: _______________
+
+أفوض بموجب هذه الوكالة العامة السيد/ة:
+الاسم الكامل: _______________
+رقم البطاقة الوطنية: _______________
+الساكن بـ: _______________
+
+لتمثيلي في جميع الإجراءات القانونية والإدارية والقضائية المتعلقة بـ:
+_______________
+
+وله/لها صلاحية:
+- التوقيع على جميع الوثائق المتعلقة بالموضوع
+- القيام بكل الإجراءات اللازمة
+- تمثيلي أمام الجهات الإدارية والقضائية
+
+تبقى هذه الوكالة سارية المفعول حتى: _______________
+
+حرر في: _______________ بتاريخ: _______________
+
+توقيع الموكِّل: _______________
+توقيع الوكيل (للقبول): _______________`,
+    content_fr:`Procuration Générale
+═══════════════════════
+
+Je soussigné(e):
+Nom complet: _______________
+CIN numéro: _______________
+Délivré le: _______________ à: _______________
+Demeurant à: _______________
+
+Donne par la présente procuration générale à M./Mme:
+Nom complet: _______________
+CIN numéro: _______________
+Demeurant à: _______________
+
+Le pouvoir de me représenter dans toutes les procédures légales, administratives et judiciaires relatives à:
+_______________
+
+Avec pouvoir de:
+- Signer tous les documents relatifs à l'objet
+- Effectuer toutes les démarches nécessaires
+- Me représenter devant les autorités administratives et judiciaires
+
+Cette procuration reste valable jusqu'au: _______________
+
+Fait à: _______________ le: _______________
+
+Signature du Mandant: _______________
+Signature du Mandataire (acceptation): _______________`
+  },
+  {
+    icon:'🏢', ar:'عقد تأسيس شركة ذ.م.م', fr:'Acte de Création SARL',
+    content_ar:`عقد تأسيس شركة ذات مسؤولية محدودة (ذ.م.م)
+═══════════════════════
+
+الشركاء المؤسسون:
+1. السيد/ة: _______________ حصة: ___________ درهم
+2. السيد/ة: _______________ حصة: ___________ درهم
+
+المادة 1 - التسمية الاجتماعية:
+"_______________" ش.ذ.م.م
+
+المادة 2 - الغرض الاجتماعي:
+_______________
+
+المادة 3 - المقر الاجتماعي:
+_______________
+
+المادة 4 - رأس المال:
+يحدد رأس المال الاجتماعي بـ: ___________ درهم
+مقسماً على ___ حصة بقيمة ___________ درهم للحصة.
+
+المادة 5 - المدير:
+يعين الشركاء كمدير للشركة السيد/ة: _______________
+
+المادة 6 - مدة الشركة:
+99 سنة ابتداءً من تاريخ التسجيل
+
+حرر في: _______________ بتاريخ: _______________
+
+توقيعات الشركاء المؤسسين`,
+    content_fr:`Acte Constitutif SARL
+═══════════════════════
+
+Associés fondateurs:
+1. M./Mme: _______________ Part: ___________ DH
+2. M./Mme: _______________ Part: ___________ DH
+
+Article 1 - Dénomination sociale:
+"_______________" SARL
+
+Article 2 - Objet social:
+_______________
+
+Article 3 - Siège social:
+_______________
+
+Article 4 - Capital social:
+Le capital social est fixé à: ___________ DH
+Divisé en ___ parts de ___________ DH chacune.
+
+Article 5 - Gérant:
+Les associés désignent comme gérant: M./Mme _______________
+
+Article 6 - Durée:
+99 ans à compter de la date d'immatriculation
+
+Fait à: _______________ le: _______________
+
+Signatures des associés fondateurs`
+  },
+  {
+    icon:'📝', ar:'إعذار قانوني', fr:'Mise en Demeure',
+    content_ar:`إعذار قانوني
+═══════════════════════
+
+المرسل: السيد/ة _______________
+العنوان: _______________
+
+المرسل إليه: السيد/ة _______________
+العنوان: _______________
+
+بتاريخ: _______________
+
+الموضوع: إعذار قانوني بشأن _______________
+
+سيدي/سيدتي،
+
+يشرفني أن أتقدم إليكم بهذا الإعذار القانوني بخصوص:
+_______________
+
+حيث إن:
+_______________
+
+وبما أنكم لم تقوموا حتى الآن بـ: _______________
+
+فإننا نعذركم ونطالبكم رسمياً بالقيام بـ: _______________
+وذلك في أجل لا يتجاوز: _______________
+
+وإلا كنا مضطرين للجوء إلى المساطر القانونية المقررة للمطالبة بحقوقنا.
+
+تفضلوا بقبول فائق الاحترام.
+
+توقيع المرسل: _______________`,
+    content_fr:`Mise en Demeure
+═══════════════════════
+
+Expéditeur: M./Mme _______________
+Adresse: _______________
+
+Destinataire: M./Mme _______________
+Adresse: _______________
+
+Le: _______________
+
+Objet: Mise en demeure concernant _______________
+
+Monsieur/Madame,
+
+J'ai l'honneur de vous adresser la présente mise en demeure concernant:
+_______________
+
+Attendu que:
+_______________
+
+Et attendu que vous n'avez pas à ce jour procédé à: _______________
+
+Je vous mets formellement en demeure de procéder à: _______________
+Et ce dans un délai n'excédant pas: _______________
+
+À défaut, je me verrai contraint(e) de recourir aux procédures légales.
+
+Veuillez agréer mes salutations distinguées.
+
+Signature: _______________`
+  },
+  {
+    icon:'⚖️', ar:'طلب الطلاق', fr:'Requête en Divorce',
+    content_ar:`مقال افتتاحي في الطلاق
+═══════════════════════
+
+إلى السيد: رئيس المحكمة الابتدائية بـ: _______________
+
+من: السيد/ة _______________
+المقيم/ة بـ: _______________
+رقم الهاتف: _______________
+
+الموضوع: طلب الطلاق
+
+يتشرف الطرف الطالب بعرض ما يلي:
+
+1. تم عقد زواج الطرفين بتاريخ: _______________
+   بموجب عقد الزواج رقم: _______________
+
+2. من هذا الزواج ولد/ولدت: _______________
+
+3. أسباب طلب الطلاق:
+   _______________
+
+4. الطلبات:
+   - التصريح بالطلاق
+   - تسوية وضعية الأطفال (الحضانة، النفقة)
+   - الحكم بالمتعة والنفقة للطرف المدعي
+
+وعليه يلتمس الطرف الطالب من عدالتكم التفضل بالحكم له بما يطلبه.
+
+والله ولي التوفيق
+
+التاريخ: _______________
+التوقيع: _______________`,
+    content_fr:`Requête en Divorce
+═══════════════════════
+
+À: Monsieur le Président du Tribunal de Première Instance de: _______________
+
+De: M./Mme _______________
+Demeurant à: _______________
+Tél: _______________
+
+Objet: Demande en divorce
+
+Le requérant a l'honneur d'exposer ce qui suit:
+
+1. Les parties ont contracté mariage le: _______________
+   Par acte de mariage numéro: _______________
+
+2. De cette union est/sont né(s): _______________
+
+3. Motifs de la demande en divorce:
+   _______________
+
+4. Demandes:
+   - Prononcer le divorce
+   - Régler la situation des enfants (garde, pension)
+   - Condamner à la pension alimentaire et au douaire
+
+En conséquence, le requérant sollicite qu'il plaise au Tribunal de statuer en sa faveur.
+
+Date: _______________
+Signature: _______________`
+  }
+];
+
+// ─── CHAT HISTORY ───
+let chatHistory = [];
+
+// ─── LANG ───
+function setLang(lang) {
+  currentLang = lang;
+  document.body.className = lang === 'fr' ? 'fr' : '';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn')[lang === 'ar' ? 0 : 1].classList.add('active');
+
+  document.getElementById('site-title').textContent =
+    lang === 'ar' ? 'المستشار القانوني المغربي' : 'Conseiller Juridique Marocain';
+  document.getElementById('site-sub').textContent =
+    lang === 'ar' ? 'مدعوم بالذكاء الاصطناعي • استشارات فورية' : 'Propulsé par l\'IA • Consultations instantanées';
+  document.getElementById('btn-upgrade').textContent =
+    lang === 'ar' ? 'اشترك الآن' : 'S\'abonner';
+  document.getElementById('chat-input').placeholder =
+    lang === 'ar' ? 'اكتب سؤالك القانوني هنا...' : 'Posez votre question juridique ici...';
+  document.getElementById('send-btn').textContent =
+    lang === 'ar' ? 'إرسال ←' : 'Envoyer →';
+
+  // Suggestions
+  const sugs = document.getElementById('suggestions');
+  const arSugs = ['ما هي حقوق المستأجر؟','كيف أطلب الطلاق؟','ما هي تعويضات الفصل؟','كيف أسجل شركتي؟'];
+  const frSugs = ['Droits du locataire?','Comment divorcer?','Indemnités de licenciement?','Comment créer une société?'];
+  sugs.innerHTML = (lang === 'ar' ? arSugs : frSugs).map(q =>
+    `<button class="suggestion-btn" onclick="fillInput(this.textContent)">${q}</button>`
+  ).join('');
+
+  // Update all .t elements
+  document.querySelectorAll('.t').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if(val) el.textContent = val;
+  });
+}
+
+// ─── TABS ───
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ─── CHAT ───
+function fillInput(text) {
+  document.getElementById('chat-input').value = text;
+  document.getElementById('chat-input').focus();
+}
+
+async function sendMessage() {
+  if(!isPremium && msgCount >= FREE_LIMIT) {
+    document.getElementById('premium-wall').style.display = 'block';
+    return;
+  }
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if(!text) return;
+
+  addMessage('user', text);
+  chatHistory.push({ role:'user', content:text });
+  input.value = '';
+
+  const typingId = addTyping();
+  document.getElementById('send-btn').disabled = true;
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system: SYSTEM_PROMPT,
+        messages: chatHistory
+      })
+    });
+    const data = await resp.json();
+    const reply = data.content?.[0]?.text || (currentLang === 'ar' ? 'حدث خطأ، يرجى المحاولة.' : 'Une erreur est survenue.');
+    removeTyping(typingId);
+    addMessage('assistant', '⚖️ ' + reply);
+    chatHistory.push({ role:'assistant', content: reply });
+    msgCount++;
+    if(!isPremium && msgCount >= FREE_LIMIT) {
+      document.getElementById('premium-wall').style.display = 'block';
+    }
+  } catch(e) {
+    removeTyping(typingId);
+    addMessage('assistant', currentLang === 'ar' ? '⚠️ خطأ في الاتصال. تأكد من اتصالك بالإنترنت.' : '⚠️ Erreur de connexion.');
+  }
+  document.getElementById('send-btn').disabled = false;
+}
+
+function addMessage(role, text) {
+  const container = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  div.innerHTML = `<div class="bubble">${text.replace(/\n/g,'<br>')}</div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+let typingCounter = 0;
+function addTyping() {
+  const id = 'typing-' + (++typingCounter);
+  const container = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg assistant';
+  div.id = id;
+  div.innerHTML = `<div class="bubble"><div class="typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return id;
+}
+function removeTyping(id) {
+  const el = document.getElementById(id);
+  if(el) el.remove();
+}
+
+// ─── TEMPLATES ───
+function showTemplate(idx) {
+  currentTplIdx = idx;
+  tplLang = currentLang;
+  const tpl = TEMPLATES[idx];
+  document.getElementById('templates-grid').style.display = 'none';
+  const view = document.getElementById('template-view');
+  view.classList.add('active');
+  document.getElementById('tpl-title').textContent = tpl.icon + ' ' + (currentLang === 'ar' ? tpl.ar : tpl.fr);
+  renderTplContent();
+  document.querySelectorAll('.tlang-btn').forEach((b,i) => b.classList.toggle('active', i === (tplLang === 'ar' ? 0 : 1)));
+}
+function hideTemplate() {
+  document.getElementById('templates-grid').style.display = 'grid';
+  document.getElementById('template-view').classList.remove('active');
+}
+function switchTplLang(lang) {
+  tplLang = lang;
+  renderTplContent();
+  document.querySelectorAll('.tlang-btn').forEach((b,i) => b.classList.toggle('active', i === (lang === 'ar' ? 0 : 1)));
+  document.getElementById('tpl-content').dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.getElementById('tpl-content').style.fontFamily = lang === 'ar' ? "'Amiri',serif" : "'Cormorant Garamond',Georgia,serif";
+}
+function renderTplContent() {
+  const tpl = TEMPLATES[currentTplIdx];
+  document.getElementById('tpl-content').value = tplLang === 'ar' ? tpl.content_ar : tpl.content_fr;
+}
+function copyTemplate() {
+  const ta = document.getElementById('tpl-content');
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const btn = event.currentTarget;
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✅ ' + (currentLang === 'ar' ? 'تم النسخ!' : 'Copié!');
+    setTimeout(() => btn.innerHTML = orig, 2000);
+  });
+}
+
+// ─── MODAL ───
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', e => { if(e.target === e.currentTarget) closeModal(); });
+</script>
+</body>
+</html>
