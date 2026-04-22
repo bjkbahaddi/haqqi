@@ -43,7 +43,10 @@ header {
   position: sticky; top:0; z-index:100;
   box-shadow: 0 4px 30px rgba(0,0,0,0.5);
 }
-.header-top {
+.header-top {<!-- في header-actions -->
+<button class="lang-btn" id="dashboard-btn" onclick="showDashboard()" style="display:none;">
+  👤 حسابي
+</button>
   display:flex; align-items:center; justify-content:space-between;
   padding: 12px 24px; flex-wrap:wrap; gap:10px;
 }
